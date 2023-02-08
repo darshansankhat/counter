@@ -1,22 +1,28 @@
-import 'dart:js_util';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Homescrren extends StatefulWidget {
-  const Homescrren({Key? key}) : super(key: key);
+class Homescreen extends StatefulWidget {
+  const Homescreen({Key? key}) : super(key: key);
 
   @override
-  State<Homescrren> createState() => _HomescrrenState();
+  State<Homescreen> createState() => _HomescreenState();
 }
 
-class _HomescrrenState extends State<Homescrren> {
+class _HomescreenState extends State<Homescreen> {
   int a = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black38,
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () {
+            setState(() {
+              a = 0;
+            });
+          },
+          child: Icon(Icons.clear_outlined, size: 50),
+        ),
         actions: [
           GestureDetector(
             onTap: () {
@@ -58,14 +64,6 @@ class _HomescrrenState extends State<Homescrren> {
             },
             child: Icon(Icons.four_k, size: 50),
           ),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                a = 1;
-              });
-            },
-            child: Icon(Icons.signal_cellular_null, size: 50),
-          ),
         ],
       ),
       body: Center(
@@ -75,13 +73,17 @@ class _HomescrrenState extends State<Homescrren> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
-              border: Border.all(color: Colors.red)),
+              border: Border.all(color: Colors.red, width: 10)),
           child: Center(
-              child: Text(
-            "$a",
-            style: TextStyle(
-                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.red),
-          )),
+            child: Text(
+              "$a",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                  fontStyle: FontStyle.italic),
+            ),
+          ),
         ),
       ),
     );
